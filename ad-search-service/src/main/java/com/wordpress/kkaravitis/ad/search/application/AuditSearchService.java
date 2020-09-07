@@ -1,7 +1,7 @@
 package com.wordpress.kkaravitis.ad.search.application;
 
-import com.wordpress.kkaravitis.ad.search.application.port.out.AdRepository;
-import com.wordpress.kkaravitis.ad.search.application.port.out.SendStatisticsPort;
+import com.wordpress.kkaravitis.ad.search.application.port.outbound.AdRepository;
+import com.wordpress.kkaravitis.ad.search.application.port.outbound.SendStatisticsPort;
 import com.wordpress.kkaravitis.ad.search.util.domain.AdInPageResults;
 import com.wordpress.kkaravitis.ad.search.util.domain.AdInSearchResults;
 import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdDisplayEvent;

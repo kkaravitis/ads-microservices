@@ -5,7 +5,7 @@ import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.mapper.PageableMap
 import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.model.PageParameters;
 import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.model.SearchCriteriaParameters;
 import com.wordpress.kkaravitis.ad.search.application.*;
-import com.wordpress.kkaravitis.ad.search.application.port.in.AdServicePort;
+import com.wordpress.kkaravitis.ad.search.application.port.inbound.AdServicePort;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
