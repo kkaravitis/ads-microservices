@@ -1,7 +1,7 @@
 package com.wordpress.kkaravitis.ad.search.application;
 
 import com.wordpress.kkaravitis.ad.search.application.port.in.AdServicePort;
-import com.wordpress.kkaravitis.ad.search.application.port.outt.AdRepository;
+import com.wordpress.kkaravitis.ad.search.application.port.out.AdRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

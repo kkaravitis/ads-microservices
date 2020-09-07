@@ -1,7 +1,7 @@
 package com.wordpress.kkaravitis.ad.search.application;
 
 import com.wordpress.kkaravitis.ad.search.application.port.in.AdServicePort;
-import com.wordpress.kkaravitis.ad.search.application.port.outt.AdRepository;
+import com.wordpress.kkaravitis.ad.search.application.port.out.AdRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

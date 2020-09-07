@@ -5,7 +5,7 @@ import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.wordpress.kkaravitis.ad.search.application.*;
-import com.wordpress.kkaravitis.ad.search.application.port.outt.AdRepository;
+import com.wordpress.kkaravitis.ad.search.application.port.out.AdRepository;
 import com.wordpress.kkaravitis.ad.search.infrastructure.util.OptionalPredicateBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
