@@ -16,8 +16,6 @@ public class PageParameters implements Serializable {
 
     private Long pageSize;
 
-    private Long totalResults;
-
     private String sortField;
 
     private Sort.Direction sortDirection;
