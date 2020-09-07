@@ -41,7 +41,7 @@ public class AdProjectionRepository implements AdRepository {
             data -> (String) data[0],
             data -> (Expression<?>) data[1]));
 
-    @PersistenceContext
+
     EntityManager entityManager;
 
     @Override
@@ -73,6 +73,11 @@ public class AdProjectionRepository implements AdRepository {
                 ad.createdAt
         )).from(ad).join(ad.customer, customer)
                 .on(ad.id.eq(adId)).fetchOne();
+    }
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     private JPAQuery<AdProjection> getSearchQuery(AdFilter filter) {
