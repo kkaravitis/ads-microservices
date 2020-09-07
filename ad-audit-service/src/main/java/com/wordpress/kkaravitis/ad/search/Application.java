@@ -1,9 +1,10 @@
-package com.wordpress.kkaravitis.ad.search.infrastructure;
+package com.wordpress.kkaravitis.ad.search;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-
+@ComponentScan("com.wordpress.kkaravitis.ad.search")
 @SpringBootApplication
 public class Application {
 

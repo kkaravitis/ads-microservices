@@ -1,4 +1,4 @@
-package com.wordpress.kkaravitis.ad.search.adapter.inbound;
+package com.wordpress.kkaravitis.ad.search;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,12 +6,6 @@ import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdDisplayEvent;
 import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdsInPageResultsEvent;
 import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdsInSearchResultsEvent;
 import com.wordpress.kkaravitis.ad.search.util.kafka.Topics;
-import com.wordpress.kkaravitis.ad.search.AdDisplayEntity;
-import com.wordpress.kkaravitis.ad.search.AdInPageResultsEntity;
-import com.wordpress.kkaravitis.ad.search.AdInSearchResultsEntity;
-import com.wordpress.kkaravitis.ad.search.AdDisplayRepository;
-import com.wordpress.kkaravitis.ad.search.AdInPageResultsRepository;
-import com.wordpress.kkaravitis.ad.search.AdInSearchResultsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

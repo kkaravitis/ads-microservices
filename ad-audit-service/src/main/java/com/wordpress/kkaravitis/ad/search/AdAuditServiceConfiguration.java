@@ -1,4 +1,4 @@
-package com.wordpress.kkaravitis.ad.search.infrastructure;
+package com.wordpress.kkaravitis.ad.search;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +21,18 @@ public class AdAuditServiceConfiguration {
 
   @Value("${kafka.port:0}")
   private int kafkaPort;
+
+  @Value("${kafka.maxPartitionFetchBytes:1024}")
+  private String maxPartitionFetchBytes;
+
+  @Value("${kafka.fetchMaxBytes:1024}")
+  private String fetchMaxBytes;
+
+  @Value("${kafka.maxRequestSize:1024}")
+  private String maxRequestSize;
+
+  @Value("${kafka.bufferMemorySize:1024}")
+  private String bufferMemorySize;
 
   @Bean
   public ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory() {
