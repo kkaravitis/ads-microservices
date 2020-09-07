@@ -2,7 +2,7 @@ package com.wordpress.kkaravitis.ad.search.adapter.outbound.messaging;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wordpress.kkaravitis.ad.search.application.port.out.SendStatisticsPort;
+import com.wordpress.kkaravitis.ad.search.application.port.outt.SendStatisticsPort;
 import com.wordpress.kkaravitis.ad.search.util.domain.AdInSearchResults;
 import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdDisplayEvent;
 import com.wordpress.kkaravitis.ad.search.util.kafka.event.AdsInPageResultsEvent;
