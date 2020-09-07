@@ -3,7 +3,6 @@ package com.wordpress.kkaravitis.ad.search.adapter.outbound.persistence;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.dsl.EntityPathBase;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.wordpress.kkaravitis.ad.search.application.*;
 import com.wordpress.kkaravitis.ad.search.application.port.out.AdRepository;
