@@ -1,5 +1,3 @@
-# ad-search-statistics
-
 ## Run the code
 You need to have istalled the following tools
 - mvn 3.6.0 (https://maven.apache.org/download.cgi)
