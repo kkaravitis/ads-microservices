@@ -1,4 +1,4 @@
-package com.wordpress.kkaravitis.ad.search.application;
+package com.wordpress.kkaravitis.ad.search.application.domain;
 
 import com.wordpress.kkaravitis.ad.search.application.port.inbound.AdServicePort;
 import com.wordpress.kkaravitis.ad.search.application.port.outbound.AdRepository;

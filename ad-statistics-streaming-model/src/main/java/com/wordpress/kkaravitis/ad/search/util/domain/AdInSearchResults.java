@@ -1,11 +1,10 @@
 package com.wordpress.kkaravitis.ad.search.util.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
-@Builder
+@Setter
 @Getter
+@ToString
 public class AdInSearchResults {
     private String adId;
 

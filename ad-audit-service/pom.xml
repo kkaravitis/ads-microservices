@@ -15,10 +15,6 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.wordpress.kkaravitis</groupId>
-            <artifactId>ad-search-util</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -38,11 +34,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.wordpress.kkaravitis</groupId>
-            <artifactId>ad-search-util</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>

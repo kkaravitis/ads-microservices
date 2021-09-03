@@ -1,4 +1,4 @@
-package com.wordpress.kkaravitis.ad.search.application;
+package com.wordpress.kkaravitis.ad.search.application.domain;
 
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.EqualsAndHashCode;

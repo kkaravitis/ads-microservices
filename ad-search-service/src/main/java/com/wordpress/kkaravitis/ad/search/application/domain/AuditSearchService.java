@@ -1,4 +1,4 @@
-package com.wordpress.kkaravitis.ad.search.application;
+package com.wordpress.kkaravitis.ad.search.application.domain;
 
 import com.wordpress.kkaravitis.ad.search.application.port.outbound.AdRepository;
 import com.wordpress.kkaravitis.ad.search.application.port.outbound.SendStatisticsPort;
@@ -32,35 +32,40 @@ public class AuditSearchService {
     @Async
     public void auditSearchResults(AdFilter filter, Sort sort) {
         List<AdProjection> searchResults = repository.fetchAll(filter, sort);
-        List<AdInSearchResults> statistics = searchResults.stream().map(ad -> AdInSearchResults.builder()
-                    .adId(ad.getId())
-                    .build()
-        ).collect(Collectors.toList());
-        statisticsChannelPort.sendSearchResultsEvent(AdsInSearchResultsEvent.builder()
-                .key(UUID.randomUUID().toString())
-                .results(statistics)
-                .build());
+        List<AdInSearchResults> statistics = searchResults.stream().map(ad -> {
+            AdInSearchResults adInSearchResults = new AdInSearchResults();
+            adInSearchResults.setAdId(ad.getId());
+            return adInSearchResults;
+        }).collect(Collectors.toList());
+        AdsInSearchResultsEvent event = new AdsInSearchResultsEvent();
+        event.setResults(statistics);
+        event.setKey(UUID.randomUUID().toString());
+
+        statisticsChannelPort.sendSearchResultsEvent(event);
     }
 
     @Async
     public void auditPagedSearchResults(List<AdProjection> results, Pageable pageable) {
-        statisticsChannelPort.sendPagedSearchResultsEvent(AdsInPageResultsEvent.builder()
-                .key(UUID.randomUUID().toString())
-                .results(results.stream().map(r -> AdInPageResults.builder()
-                        .adId(r.getId())
-                        .pageNumber(pageable.getPageNumber())
-                        .perPage(pageable.getPageSize())
-                        .build())
-                        .collect(Collectors.toList()))
-                .build());
+        AdsInPageResultsEvent event = new AdsInPageResultsEvent();
+        event.setResults(results.stream().map(r -> {
+            AdInPageResults adInPageResults = new AdInPageResults();
+            adInPageResults.setAdId(r.getId());
+            adInPageResults.setPageNumber(pageable.getPageNumber());
+            adInPageResults.setPerPage(pageable.getPageSize());
+            return adInPageResults;
+        }).collect(Collectors.toList()));
+
+        event.setKey(UUID.randomUUID().toString());
+
+        statisticsChannelPort.sendPagedSearchResultsEvent(event);
     }
 
     @Async
     public void auditAd(String adId, boolean bySearch) {
-        statisticsChannelPort.sendAdDisplayEvent(AdDisplayEvent.builder()
-                .adId(adId)
-                .bySearch(bySearch)
-                .displayDate(LocalDateTime.now())
-                .build());
+        AdDisplayEvent event = new AdDisplayEvent();
+        event.setBySearch(bySearch);
+        event.setAdId(adId);
+        event.setDisplayDate(LocalDateTime.now());
+        statisticsChannelPort.sendAdDisplayEvent(event);
     }
 }

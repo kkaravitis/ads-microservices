@@ -1,8 +1,8 @@
 package com.wordpress.kkaravitis.ad.search.application.port.outbound;
 
-import com.wordpress.kkaravitis.ad.search.application.AdDetailsProjection;
-import com.wordpress.kkaravitis.ad.search.application.AdFilter;
-import com.wordpress.kkaravitis.ad.search.application.AdProjection;
+import com.wordpress.kkaravitis.ad.search.application.domain.AdDetailsProjection;
+import com.wordpress.kkaravitis.ad.search.application.domain.AdFilter;
+import com.wordpress.kkaravitis.ad.search.application.domain.AdProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

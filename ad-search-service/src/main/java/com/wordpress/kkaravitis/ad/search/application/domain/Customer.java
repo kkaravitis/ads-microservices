@@ -1,18 +1,18 @@
-package com.wordpress.kkaravitis.ad.search.application;
+package com.wordpress.kkaravitis.ad.search.application.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Setter
 @Getter
 @EqualsAndHashCode
 @Entity
+@NoArgsConstructor
+@Table(name="Customer")
 public class Customer {
     @EqualsAndHashCode.Include
     @Id

@@ -1,5 +1,6 @@
 package com.wordpress.kkaravitis.ad.search.application;
 
+import com.wordpress.kkaravitis.ad.search.application.domain.*;
 import com.wordpress.kkaravitis.ad.search.application.port.inbound.AdServicePort;
 import com.wordpress.kkaravitis.ad.search.application.port.outbound.AdRepository;
 import org.junit.jupiter.api.BeforeEach;

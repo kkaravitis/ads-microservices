@@ -4,7 +4,10 @@ import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.mapper.AdFilterMap
 import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.mapper.PageableMapper;
 import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.model.PageParameters;
 import com.wordpress.kkaravitis.ad.search.adapter.inbound.web.model.SearchCriteriaParameters;
-import com.wordpress.kkaravitis.ad.search.application.*;
+import com.wordpress.kkaravitis.ad.search.application.domain.Ad;
+import com.wordpress.kkaravitis.ad.search.application.domain.AdDetailsProjection;
+import com.wordpress.kkaravitis.ad.search.application.domain.AdFilter;
+import com.wordpress.kkaravitis.ad.search.application.domain.SearchResponse;
 import com.wordpress.kkaravitis.ad.search.application.port.inbound.AdServicePort;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -51,6 +54,7 @@ public class SearchController {
         // TODO build the command and pass it to the service
         AdDetailsProjection ad = adService.getAd(AdServicePort.GetDetailsCommand.builder()
                 .bySearch(bySearch)
+                        .identifier(id)
                 .build());
 
         if (ad != null) {

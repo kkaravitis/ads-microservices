@@ -1,22 +1,12 @@
 package com.wordpress.kkaravitis.ad.search.util.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
-@Builder
+@Setter
 @Getter
+@ToString
 public class AdInPageResults {
     private Integer pageNumber;
     private Integer perPage;
     private String adId;
-
-    @Override
-    public String toString() {
-        return "AdInPageResults{" +
-                "pageNumber=" + pageNumber +
-                ", perPage=" + perPage +
-                ", adId='" + adId + '\'' +
-                '}';
-    }
 }
