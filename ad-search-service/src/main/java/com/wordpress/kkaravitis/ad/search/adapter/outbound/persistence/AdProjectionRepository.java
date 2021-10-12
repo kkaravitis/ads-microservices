@@ -8,6 +8,7 @@ import com.wordpress.kkaravitis.ad.search.application.domain.AdDetailsProjection
 import com.wordpress.kkaravitis.ad.search.application.domain.AdFilter;
 import com.wordpress.kkaravitis.ad.search.application.domain.AdProjection;
 import com.wordpress.kkaravitis.ad.search.application.port.outbound.AdRepository;
+import com.wordpress.kkaravitis.ad.search.infrastructure.util.OptionalPredicateBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -90,16 +91,16 @@ public class AdProjectionRepository implements AdRepository {
         return new JPAQuery<AdProjection>(entityManager)
                 .select(new QAdProjection(ad.id, ad.shortDescription, ad.price, customer.name))
                 .from(ad).join(ad.category, category)
-//                .on(new OptionalPredicateBuilder(ad.isNotNull())
-//                        .notNullAnd(category.identifier::eq, filter.getCategoryIdentifier()).build())
-                .join(ad.customer, customer);
-//                .on(new OptionalPredicateBuilder(customer.isNotNull())
-//                        .notNullAnd(customer.name::containsIgnoreCase, filter.getCustomerName())
-//                        .notNullAnd(customer.role::eq, filter.getCustomerRole())
-//                        .build())
-//                .where(new OptionalPredicateBuilder(ad.isNotNull())
-//                        .notNullAnd(ad.description::containsIgnoreCase, filter.getTerm())
-//                        .build());
+                .on(new OptionalPredicateBuilder(ad.isNotNull())
+                        .notNullAnd(category.identifier::eq, filter.getCategoryIdentifier()).build())
+                .join(ad.customer, customer)
+                .on(new OptionalPredicateBuilder(customer.isNotNull())
+                        .notNullAnd(customer.name::containsIgnoreCase, filter.getCustomerName())
+                        .notNullAnd(customer.role::eq, filter.getCustomerRole())
+                        .build())
+                .where(new OptionalPredicateBuilder(ad.isNotNull())
+                        .notNullAnd(ad.description::containsIgnoreCase, filter.getTerm())
+                        .build());
     }
 
     private void applyOrder(Sort.Order order, JPAQuery<AdProjection> query) {

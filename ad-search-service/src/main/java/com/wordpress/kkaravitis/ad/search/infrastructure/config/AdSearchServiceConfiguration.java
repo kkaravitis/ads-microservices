@@ -20,11 +20,14 @@ import java.util.Map;
 @Configuration
 @EnableSwagger2
 public class AdSearchServiceConfiguration {
-    @Value("${kafka.hostname:empty}")
-    private String kafkaHostName;
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String kafkaBootstrapAddress;
 
-    @Value("${kafka.port:0}")
-    private int kafkaPort;
+//    @Value("${kafka.hostname:empty}")
+//    private String kafkaHostName;
+//
+//    @Value("${kafka.port:0}")
+//    private int kafkaPort;
 
     @Value("${kafka.maxPartitionFetchBytes:1024}")
     private String maxPartitionFetchBytes;
@@ -41,9 +44,13 @@ public class AdSearchServiceConfiguration {
 
     private Map<String, Object> producerConfigs() {
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHostName + ":" + kafkaPort);
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapAddress);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.ACKS_CONFIG, "all");
+        props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 1);
+        props.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 300000);
+
 
         return props;
     }

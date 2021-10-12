@@ -16,7 +16,7 @@ public class AdService implements AdServicePort {
 
     @Override
     public SearchResponse getAds(AdServicePort.SearchCommand command) {
-        auditSearchService.auditSearchResults(command.getFilter(), command.getPageable().getSort());
+        //auditSearchService.auditSearchResults(command.getFilter(), command.getPageable().getSort());
         Page<AdProjection> page =  repository.fetchPaged(command.getFilter(), command.getPageable());
         auditSearchService.auditPagedSearchResults(page.getContent(), command.getPageable());
         return SearchResponse.builder()
