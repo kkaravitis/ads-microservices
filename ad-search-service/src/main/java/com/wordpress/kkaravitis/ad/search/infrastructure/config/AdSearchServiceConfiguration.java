@@ -49,7 +49,8 @@ public class AdSearchServiceConfiguration {
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 1);
-        props.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 300000);
+        props.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 2147483647);
+        props.put(ProducerConfig.RETRIES_CONFIG, 2147483647);
 
 
         return props;

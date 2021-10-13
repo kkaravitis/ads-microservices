@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 public class AdEventConsumer {
-    private static final String AD_DISPLAYS_EVENT_LISTENER_ID = "AD_DISPLAYS_EVENT_LISTENER_ID_1";
-    private static final String AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID = "AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID_1";
-    private static final String AD_IN_PAGE_RESULTS_EVENT_LISTENER_ID = "AD_IN_PAGE_RESULTS_EVENT_LISTENER_ID_1";
+    private static final String AD_DISPLAYS_EVENT_LISTENER_ID = "AD_DISPLAYS_EVENT_LISTENER_ID";
+    private static final String AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID = "AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID";
+    private static final String AD_IN_PAGE_RESULTS_EVENT_LISTENER_ID = "AD_IN_PAGE_RESULTS_EVENT_LISTENER_ID";
 
     private static final Logger logger = LoggerFactory.getLogger(AdEventConsumer.class);
 
