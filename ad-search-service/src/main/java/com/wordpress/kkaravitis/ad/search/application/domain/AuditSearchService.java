@@ -41,7 +41,7 @@ public class AuditSearchService {
         event.setResults(statistics);
         event.setKey(UUID.randomUUID().toString());
 
-        statisticsChannelPort.sendSearchResultsEvent(event);
+        //statisticsChannelPort.sendSearchResultsEvent(event);
     }
 
     @Async
@@ -57,7 +57,8 @@ public class AuditSearchService {
 
         event.setKey(UUID.randomUUID().toString());
 
-        statisticsChannelPort.sendPagedSearchResultsEvent(event);
+        //statisticsChannelPort.sendPagedSearchResultsEvent(event);
+        statisticsChannelPort.sendMultiThread(event);
     }
 
     @Async
@@ -66,6 +67,6 @@ public class AuditSearchService {
         event.setBySearch(bySearch);
         event.setAdId(adId);
         event.setDisplayDate(LocalDateTime.now());
-        statisticsChannelPort.sendAdDisplayEvent(event);
+        //statisticsChannelPort.sendAdDisplayEvent(event);
     }
 }

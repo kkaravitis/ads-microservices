@@ -10,5 +10,7 @@ public interface SendStatisticsPort {
 
     void sendPagedSearchResultsEvent(AdsInPageResultsEvent event);
 
+    void sendMultiThread(AdsInPageResultsEvent event);
+
     void sendAdDisplayEvent(AdDisplayEvent event);
 }

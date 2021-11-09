@@ -23,23 +23,23 @@ public class AdEventConsumer {
 
     private final AdAuditService auditService;
 
-    @KafkaListener(id = AD_DISPLAYS_EVENT_LISTENER_ID,
-            topics = Topics.AD_DETAILS_DISPLAY_TOPIC,
-            groupId = "${ad.details.kafka.consumer.group.id:empty}",
-            containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void consumeAdDisplaysEvent(String message) throws JsonProcessingException {
-        AdDisplayEvent event = new ObjectMapper().readValue(message, AdDisplayEvent.class);
-        auditService.saveAdDisplayEntity(event);
-    }
-
-    @KafkaListener(id = AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID,
-            topics = Topics.SEARCH_STATISTICS_TOPIC,
-            groupId = "${ad.search.kafka.consumer.group.id:empty}",
-            containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void consumeAdsInSearchEvent(String message) throws JsonProcessingException {
-        AdsInSearchResultsEvent event = new ObjectMapper().readValue(message, AdsInSearchResultsEvent.class);
-        auditService.saveAdsInSearchEvent(event);
-    }
+//    @KafkaListener(id = AD_DISPLAYS_EVENT_LISTENER_ID,
+//            topics = Topics.AD_DETAILS_DISPLAY_TOPIC,
+//            groupId = "${ad.details.kafka.consumer.group.id:empty}",
+//            containerFactory = "concurrentKafkaListenerContainerFactory")
+//    public void consumeAdDisplaysEvent(String message) throws JsonProcessingException {
+//        AdDisplayEvent event = new ObjectMapper().readValue(message, AdDisplayEvent.class);
+//        //auditService.saveAdDisplayEntity(event);
+//    }
+//
+//    @KafkaListener(id = AD_IN_SEARCH_RESULTS_EVENT_LISTENER_ID,
+//            topics = Topics.SEARCH_STATISTICS_TOPIC,
+//            groupId = "${ad.search.kafka.consumer.group.id:empty}",
+//            containerFactory = "concurrentKafkaListenerContainerFactory")
+//    public void consumeAdsInSearchEvent(String message) throws JsonProcessingException {
+//        AdsInSearchResultsEvent event = new ObjectMapper().readValue(message, AdsInSearchResultsEvent.class);
+//        //auditService.saveAdsInSearchEvent(event);
+//    }
 
     @KafkaListener(id = AD_IN_PAGE_RESULTS_EVENT_LISTENER_ID,
             topics = Topics.PAGEABLE_SEARCH_STATISTICS_TOPIC,

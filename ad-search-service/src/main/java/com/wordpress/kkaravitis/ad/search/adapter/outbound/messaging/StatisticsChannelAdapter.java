@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Slf4j
 @Component
@@ -28,10 +31,12 @@ public class StatisticsChannelAdapter implements SendStatisticsPort {
 
     private final String adDetailsDisplaysTopic;
 
+    private Integer concurrentWrites = 12;
+
     public StatisticsChannelAdapter(KafkaTemplate<String, String> kafkaTemplate,
                                     @Value("${kafka.search.statistics.topic:searchStatisticsTopic}")
                                             String searchStatisticsTopic,
-                                    @Value("${kafka.paged.search.statistics.topic:pageableSearchStatisticsTopic}")
+                                    @Value("${kafka.paged.search.statistics.topic:testTopic}")
                                     String pageableSearchStatisticsTopic,
                                     @Value("${kafka.ad.details.displays.statistics.topic:adDetailsDisplaysTopic}")
                                     String adDetailsDisplaysTopic,
@@ -72,12 +77,31 @@ public class StatisticsChannelAdapter implements SendStatisticsPort {
     }
 
     @Override
+    public void sendMultiThread(AdsInPageResultsEvent event) {
+        ExecutorService executorService = Executors.newFixedThreadPool(concurrentWrites);
+        CountDownLatch latch = new CountDownLatch(concurrentWrites);
+        for (int i=0; i<concurrentWrites; i++) {
+            Runnable runnable = () -> {
+                this.sendPagedSearchResultsEvent(event);
+                latch.countDown();
+            };
+            executorService.execute(runnable);
+        }
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
+        executorService.shutdown();
+    }
+
+    @Override
     public void sendAdDisplayEvent(AdDisplayEvent event) {
         try {
             String message = new ObjectMapper().writeValueAsString(event);
             kafkaTemplate.send(adDetailsDisplaysTopic, message);
         } catch (JsonProcessingException e) {
-            log.error("unable to json process the ad display event \n" +  event.toString());
+            log.error("unable to json process the ad display event \n" + event.toString());
         }
     }
 }
