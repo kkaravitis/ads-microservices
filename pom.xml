@@ -20,6 +20,7 @@
         <module>ad-search-service</module>
         <module>ad-audit-service</module>
         <module>ad-statistics-streaming-model</module>
+        <module>ad-secondary-audit-service</module>
     </modules>
 
     <properties>
